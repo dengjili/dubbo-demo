@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">  
+    <!-- 应用名称 -->
+    <dubbo:application name="order-provider-app" owner="order-test" />  
+    <!-- 不使用注册中心 -->
+    <dubbo:registry address="N/A" />  
+    <!-- rpc协议 -->
+    <dubbo:protocol name="dubbo" port="20880" />  
+    <!-- 对外暴露接口 -->
+    <dubbo:service interface="org.dubbo.order.api.IOrderService" ref="orderService" />  
+    <!-- 实例化对象 -->
+    <!-- <dubbo:reference id="orderService" interface="org.dubbo.order.provider.OrderServiceImpl" />  --> 
+    <bean id="orderService" class="org.dubbo.order.provider.OrderServiceImpl" />
+</beans>
