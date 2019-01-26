@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">  
+    <!-- 应用名称 -->
+    <dubbo:application name="order-consumer-app" owner="client-test" />  
+    <!-- 使用zookeeper注册中心 -->
+    <dubbo:registry address="zookeeper://192.168.1.103:2181?client=zkclient" client="zkclient"/>
+    <!-- rpc协议 -->
+    <dubbo:protocol name="dubbo" port="20880" />  
+    <!-- 远程对象代理 -->
+   	<dubbo:reference id="orderService" interface="org.dubbo.order.api.IOrderService"/>
+    <!-- 远程对象代理 -->
+   	<dubbo:reference id="orderQueryService" interface="org.dubbo.order.api.IOrderQueryService" protocol="dubbo">
+   	</dubbo:reference>
+</beans>

@@ -1,4 +1,4 @@
-package org.dubbo.order.provider;
+package org.dubbo.order.provider2;
 
 import com.alibaba.dubbo.container.Main;
 

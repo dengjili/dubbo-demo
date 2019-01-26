@@ -8,12 +8,17 @@
 		<artifactId>dubbo-demo</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>dubbo-xxx-client</artifactId>
-	<name>dubbo-xxx-client</name>
+	<artifactId>dubbo-xxx-web</artifactId>
+	<packaging>war</packaging>
+	<name>dubbo-xxx-web Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
 	<properties>
+		<spring.version>5.0.9.RELEASE</spring.version>
+		<aspectj.version>1.9.1</aspectj.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.caucho</groupId>
@@ -26,6 +31,12 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>priv.dengjl</groupId>
@@ -36,5 +47,20 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- 解决工程build错误，发布tomcat环境，移除 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
+	<build>
+		<finalName>dubbo-xxx-web</finalName>
+	</build>
 </project>
