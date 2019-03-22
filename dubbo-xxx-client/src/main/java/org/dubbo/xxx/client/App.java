@@ -1,6 +1,6 @@
 package org.dubbo.xxx.client;
 
-import org.dubbo.order.api.IOrderService;
+import org.dubbo.order.api.IOrderOperateService;
 import org.dubbo.order.api.base.OrderRequest;
 import org.dubbo.order.api.base.OrderResponse;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +16,7 @@ public class App
     {
     	ApplicationContext applicationContext = new ClassPathXmlApplicationContext("order-consumer.xml");
         // 订单调用
-    	IOrderService orderService = applicationContext.getBean(IOrderService.class);
+    	IOrderOperateService orderService = applicationContext.getBean(IOrderOperateService.class);
     	
     	OrderRequest<String> request = new OrderRequest<>();
     	request.setData("get order sequence");

@@ -10,8 +10,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>dubbo-order-api</module>
-    <module>ubbo-order-provider</module>
     <module>dubbo-order-provider</module>
-    <module>dubbo-order-provider2</module>
   </modules>
 </project>

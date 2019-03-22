@@ -7,6 +7,7 @@
 <title>测试</title>
 </head>
 <body>
-	订单号： ${orderId}<br/>
+	用户id： ${userId}<br/>
+	订单id： ${orderId}<br/>
 </body>
 </html>

@@ -2,7 +2,7 @@ package org.dubbo.xxx.client;
 
 import java.io.IOException;
 
-import org.dubbo.order.api.IOrderService;
+import org.dubbo.order.api.IOrderOperateService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,7 +13,7 @@ public class BootstrapApp {
 	private static Logger logger = LoggerFactory.getLogger(BootstrapApp.class);
 	public static void main(String[] args) throws IOException {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("order-consumer.xml");
-    	IOrderService orderService = applicationContext.getBean(IOrderService.class);
+    	IOrderOperateService orderService = applicationContext.getBean(IOrderOperateService.class);
 		logger.debug(orderService.toString());
 		System.in.read();
 	}

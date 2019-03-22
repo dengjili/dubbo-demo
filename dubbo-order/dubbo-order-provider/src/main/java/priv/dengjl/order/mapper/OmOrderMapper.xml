@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.dengjl.order.dao.OmOrderMapper">
+	<resultMap id="BaseResultMap" type="priv.dengjl.order.bean.OmOrder">
+		<result column="id" jdbcType="VARCHAR" property="id" />
+		<result column="busi_name" jdbcType="VARCHAR" property="busiName" />
+		<result column="user_id" jdbcType="VARCHAR" property="userId" />
+	</resultMap>
+	
+	<insert id="addOmOrder" parameterType="OmOrder">
+		insert into om_order (id, busi_name, user_id)
+		values (#{id}, #{busiName}, #{userId})
+	</insert>
+</mapper>
