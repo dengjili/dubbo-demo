@@ -9,5 +9,6 @@
 <body>
 	用户id： ${userId}<br/>
 	订单id： ${orderId}<br/>
+	充值积分： ${score}<br/>
 </body>
 </html>

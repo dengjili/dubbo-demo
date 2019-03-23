@@ -9,6 +9,9 @@
 	<modules>
 		<module>dubbo-order</module>
 		<module>dubbo-user</module>
+		<module>dubbo-score</module>
+		<module>dubbo-rule</module>
+		<module>dubbo-framework</module>
 		<module>dubbo-xxx-client</module>
 		<module>dubbo-xxx-web</module>
 	</modules>
@@ -104,6 +107,13 @@
 				</exclusions>
 			</dependency>
 
+			<!-- 其他 -->
+			<dependency>
+				<groupId>commons-chain</groupId>
+				<artifactId>commons-chain</artifactId>
+				<version>1.2</version>
+			</dependency>
+
 			<!-- 自定义模块 -->
 			<dependency>
 				<groupId>priv.dengjl</groupId>
@@ -113,6 +123,16 @@
 			<dependency>
 				<groupId>priv.dengjl</groupId>
 				<artifactId>dubbo-user-api</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>priv.dengjl</groupId>
+				<artifactId>dubbo-score-api</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>priv.dengjl</groupId>
+				<artifactId>dubbo-rule-api</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 

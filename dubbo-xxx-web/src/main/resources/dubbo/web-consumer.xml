@@ -11,6 +11,8 @@
     
     <!-- 用户中心服务 -->
    	<dubbo:reference id="userOperateService" interface="org.dubbo.user.api.IUserOperateService"/>
-    <!-- 订单中心对象 -->
+    <!-- 订单中心服务 -->
    	<dubbo:reference id="orderOperateService" interface="org.dubbo.order.api.IOrderOperateService"/>
+    <!-- 订单中心服务 -->
+   	<dubbo:reference id="scoreOperateService" interface="org.dubbo.score.api.IScoreOperateService"/>
 </beans>
