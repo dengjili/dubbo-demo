@@ -6,17 +6,14 @@ import org.apache.commons.chain.Command;
 import org.dubbo.rule.provider.SpringContextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import priv.dengjl.rule.check.confg.bean.RmRule;
 import priv.dengjl.rule.check.confg.dao.RmRuleMapper;
 
 @Component
-public class DbRuleTemplate extends AbstractRuleTemplate implements ApplicationContextAware {
+public class DbRuleTemplate extends AbstractRuleTemplate {
 
 	@Autowired
 	private RmRuleMapper rmRuleMapper;
@@ -48,15 +45,5 @@ public class DbRuleTemplate extends AbstractRuleTemplate implements ApplicationC
 			}
 		}
 	}
-
-	@Override
-	protected void setinit() {
-		chain.addRule(new ExceptionFilter());
-	}
-
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import priv.dengjl.rule.check.command.Rule;
+import priv.dengjl.rule.check.exception.RuleConstantEnum;
 import priv.dengjl.rule.check.exception.RuleExceptionUtils;
 
 @Component
@@ -22,7 +23,7 @@ public class IsUserExist implements Rule {
 			
 		}
 		
-		RuleExceptionUtils.throwException("ORDER_1234", "987978");
+		RuleExceptionUtils.throwException(RuleConstantEnum.EXCEPTION_ORDER_001);
 		return false;
 	}
 }

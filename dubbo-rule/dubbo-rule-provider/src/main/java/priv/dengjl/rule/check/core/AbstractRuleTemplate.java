@@ -21,6 +21,7 @@ public abstract class AbstractRuleTemplate {
 
 	public void setChain(RuleChain chain) {
 		this.chain = chain;
+		chain.addRule(new ExceptionFilter());
 	}
 
 	public RuleContext getContext() {
@@ -32,7 +33,6 @@ public abstract class AbstractRuleTemplate {
 	}
 
 	public RuleResponse doCheck() {
-		setinit();
 		RuleResponse ruleResponse = new RuleResponse();
 		try {
 			chain.execute(context);
@@ -50,6 +50,4 @@ public abstract class AbstractRuleTemplate {
 	}
 
 	protected abstract void addRule(Object ...args);
-
-	protected abstract  void setinit();
 }
