@@ -1,6 +1,8 @@
 package priv.dengjl.controller;
 
 import org.dubbo.order.api.IOrderOperateService;
+import org.dubbo.rule.api.IRuleOperateService;
+import org.dubbo.rule.api.RuleResult;
 import org.dubbo.score.api.IScoreOperateService;
 import org.dubbo.user.api.IUserOperateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class MyController {
 	@Autowired
 	private IScoreOperateService scoreOperateService;
 	
+	@Autowired
+	private IRuleOperateService ruleOperateService;
+	
 	
 	@RequestMapping("/index")
 	public ModelAndView index() {
@@ -32,6 +37,16 @@ public class MyController {
 		mv.addObject("orderId", orderId);
 		mv.addObject("score", score);
 		mv.setViewName("index");
+		return mv;
+	}
+	
+	@RequestMapping("/check")
+	public ModelAndView check() {
+		ModelAndView mv = new ModelAndView();
+		RuleResult result = ruleOperateService.checkRuleByCode("ADD_OFFER");
+		mv.addObject("code", result.getCode());
+		mv.addObject("message", result.getMessage());
+		mv.setViewName("check");
 		return mv;
 	}
 }

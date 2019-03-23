@@ -25,4 +25,10 @@ public class OrderOperateServiceImpl implements IOrderOperateService {
 		omOrderMapper.addOmOrder(omOrder);
 		return orderId;
 	}
+
+	@Override
+	public String queryOrder(String userId) {
+		// 只做功能测试
+		return "true";
+	}
 }

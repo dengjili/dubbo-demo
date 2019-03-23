@@ -51,6 +51,10 @@
 			<artifactId>dubbo-score-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>priv.dengjl</groupId>
+			<artifactId>dubbo-rule-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>

@@ -8,4 +8,11 @@
 		<result column="status" jdbcType="CHAR" property="status" />
 		<result column="remarks" jdbcType="VARCHAR" property="remarks" />
 	</resultMap>
+
+	<select id="getRmRulesByBusiCode" resultMap="BaseResultMap">
+		SELECT t1.* FROM
+		rule.rm_rule t1, rule.rm_rule_sence_rel t2, rule.rm_sence t3 where
+		t2.rule_id = t1.id
+		and t2.sence_id = t3.id and t3.`code` = #{busiCode}
+	</select>
 </mapper>

@@ -5,8 +5,8 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">  
     
 	<!-- dubbo基本配置 -->
-    <dubbo:application name="web-app" owner="web-owner" ></dubbo:application>
-    <dubbo:registry address="zookeeper://192.168.1.104:2181?client=zkclient" client="zkclient"/>
+    <dubbo:application name="web-app" owner="web-owner"></dubbo:application>
+    <dubbo:registry address="zookeeper://10.64.156.135:2181?client=zkclient" client="zkclient"/>
     <dubbo:protocol name="dubbo" port="20880" />  
     
     <!-- 用户中心服务 -->
@@ -15,4 +15,6 @@
    	<dubbo:reference id="orderOperateService" interface="org.dubbo.order.api.IOrderOperateService"/>
     <!-- 订单中心服务 -->
    	<dubbo:reference id="scoreOperateService" interface="org.dubbo.score.api.IScoreOperateService"/>
+    <!-- rule中心服务 -->
+   	<dubbo:reference id="ruleOperateService" interface="org.dubbo.rule.api.IRuleOperateService" retries="0" timeout="600000"/>
 </beans>

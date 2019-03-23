@@ -2,17 +2,21 @@ package priv.dengjl.rule.check.core;
 
 import java.util.List;
 
+import org.apache.commons.chain.Command;
+import org.dubbo.rule.provider.SpringContextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-import priv.dengjl.rule.check.command.Rule;
 import priv.dengjl.rule.check.confg.bean.RmRule;
 import priv.dengjl.rule.check.confg.dao.RmRuleMapper;
 
 @Component
-public class DbRuleTemplate extends AbstractRuleTemplate {
+public class DbRuleTemplate extends AbstractRuleTemplate implements ApplicationContextAware {
 
 	@Autowired
 	private RmRuleMapper rmRuleMapper;
@@ -21,7 +25,6 @@ public class DbRuleTemplate extends AbstractRuleTemplate {
 	
 	@Override
 	protected void addRule(Object... args) {
-		
 		if (args != null && args.length > 0) {
 			String busiCode = args[0].toString();
 			List<RmRule> rmRules = rmRuleMapper.getRmRulesByBusiCode(busiCode);
@@ -31,18 +34,29 @@ public class DbRuleTemplate extends AbstractRuleTemplate {
 					String clazz = rmRule.getClazz();
 					try {
 						Class<?> forName = Class.forName(clazz);
-						Object instance = forName.newInstance();
+						Object instance = SpringContextUtils.getBean(forName);
 						
-						if (instance instanceof Rule) {
-							Rule rule = (Rule) instance;
+						if (instance instanceof Command) {
+							Command rule = (Command) instance;
 							chain.addRule(rule);
 						}
-					} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+					} catch (ClassNotFoundException e) {
 						logger.error("加载异常处理链失败, 当前异常信息：{}", e.getMessage());
 						continue;
 					}
 				}
 			}
 		}
+	}
+
+	@Override
+	protected void setinit() {
+		chain.addRule(new ExceptionFilter());
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		// TODO Auto-generated method stub
+		
 	}
 }

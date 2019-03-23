@@ -11,7 +11,7 @@ import priv.dengjl.user.dao.UmUserMapper;
 
 @Service
 public class UserOperateServiceImpl implements IUserOperateService {
-	
+
 	@Autowired
 	private UmUserMapper umUserMapper;
 
@@ -23,6 +23,12 @@ public class UserOperateServiceImpl implements IUserOperateService {
 		umUser.setName(name);
 		umUserMapper.addUmUser(umUser);
 		return id;
+	}
+
+	@Override
+	public String queryUser(String userId) {
+		// 只做功能测试
+		return "true";
 	}
 
 }

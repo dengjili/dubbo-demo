@@ -12,22 +12,35 @@ import priv.dengjl.rule.check.exception.RuleConstantEnum;
  */
 public abstract class AbstractRuleTemplate {
 	
-	protected RuleChain chain = new RuleChain();
-	protected RuleContext context = new RuleContext();
-	/**
-	 * 整条校验类的异常控制器
-	 */
-	ExceptionFilter filter = new ExceptionFilter();
+	protected RuleChain chain;
+	protected RuleContext context;
 	
-	public AbstractRuleTemplate() {
-		chain.addCommand(filter);
+	public RuleChain getChain() {
+		return chain;
 	}
-	
+
+	public void setChain(RuleChain chain) {
+		this.chain = chain;
+	}
+
+	public RuleContext getContext() {
+		return context;
+	}
+
+	public void setContext(RuleContext context) {
+		this.context = context;
+	}
+
 	public RuleResponse doCheck() {
-		RuleContext context = new RuleContext();
-		boolean result = context.isError();
-		
+		setinit();
 		RuleResponse ruleResponse = new RuleResponse();
+		try {
+			chain.execute(context);
+		} catch (Exception e) {
+			ruleResponse.setError(true);
+			ruleResponse.setRuleConstantEnum(RuleConstantEnum.EXCEPTION_COMMON);
+		}
+		boolean result = context.isError();
 		if (result) {
 			RuleConstantEnum ruleConstantEnum = context.getRuleConstantEnum();
 			ruleResponse.setError(result);
@@ -37,4 +50,6 @@ public abstract class AbstractRuleTemplate {
 	}
 
 	protected abstract void addRule(Object ...args);
+
+	protected abstract  void setinit();
 }

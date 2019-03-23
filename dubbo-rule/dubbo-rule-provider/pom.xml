@@ -31,11 +31,27 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
 		</dependency>
+		
+		<!-- rule 对外提供的服务 -->
+		<dependency>
+			<groupId>priv.dengjl</groupId>
+			<artifactId>dubbo-rule-api</artifactId>
+		</dependency>
+
+		<!-- rule 依赖对外的服务 -->
+		<dependency>
+			<groupId>priv.dengjl</groupId>
+			<artifactId>dubbo-order-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>priv.dengjl</groupId>
+			<artifactId>dubbo-user-api</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>priv.dengjl</groupId>
 			<artifactId>dubbo-score-api</artifactId>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>

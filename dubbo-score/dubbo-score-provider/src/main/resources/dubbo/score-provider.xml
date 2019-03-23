@@ -6,7 +6,7 @@
 	
 	<!-- dubbo基本配置 -->
 	<dubbo:application name="score-app" owner="score-app" />
-	<dubbo:registry address="zookeeper://192.168.1.104:2181?client=zkclient"
+	<dubbo:registry address="zookeeper://10.64.156.135:2181?client=zkclient"
 		client="zkclient" />
 	<dubbo:protocol name="dubbo" port="20882" />
 

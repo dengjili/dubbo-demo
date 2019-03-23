@@ -20,6 +20,12 @@ public class ScoreOperateServiceImpl implements IScoreOperateService {
 		smScore.setScore(count);
 		smScoreMapper.addSmScore(smScore);
 		return userId + " - " + count;
-	} 
+	}
+
+	@Override
+	public String queryScore(String userId) {
+		// 只做功能测试
+		return "true";
+	}
 
 }
